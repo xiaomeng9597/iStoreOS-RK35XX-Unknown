@@ -70,7 +70,7 @@ cp -f $GITHUB_WORKSPACE/configfiles/02_network target/linux/rockchip/rk35xx/base
 
 # 增加bdy_g98-nas
 echo -e "\\ndefine Device/bdy_g98-nas
-$(call Device/rk3588)
+\$(call Device/rk3588)
   DEVICE_VENDOR := BDY
   DEVICE_MODEL := G98
   DEVICE_PACKAGES := kmod-r8125 kmod-nvme kmod-scsi-core kmod-hwmon-pwmfan kmod-thermal
