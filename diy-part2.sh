@@ -39,17 +39,17 @@ cp -a $GITHUB_WORKSPACE/configfiles/etc/* package/base-files/files/etc/
 
 
 # 轮询检查ubus服务是否崩溃，崩溃就重启ubus服务，只针对rk3566机型，如黑豹X2和荐片TV盒子。
-cp -f $GITHUB_WORKSPACE/configfiles/httpubus package/base-files/files/etc/init.d/httpubus
-cp -f $GITHUB_WORKSPACE/configfiles/ubus-examine.sh package/base-files/files/bin/ubus-examine.sh
-chmod 755 package/base-files/files/etc/init.d/httpubus
-chmod 755 package/base-files/files/bin/ubus-examine.sh
+# cp -f $GITHUB_WORKSPACE/configfiles/httpubus package/base-files/files/etc/init.d/httpubus
+# cp -f $GITHUB_WORKSPACE/configfiles/ubus-examine.sh package/base-files/files/bin/ubus-examine.sh
+# chmod 755 package/base-files/files/etc/init.d/httpubus
+# chmod 755 package/base-files/files/bin/ubus-examine.sh
 
 
 
 # 集成黑豹X2和荐片TV盒子WiFi驱动，默认不启用WiFi
-cp -a $GITHUB_WORKSPACE/configfiles/packages/* package/firmware/
-cp -f $GITHUB_WORKSPACE/configfiles/opwifi package/base-files/files/etc/init.d/opwifi
-chmod 755 package/base-files/files/etc/init.d/opwifi
+# cp -a $GITHUB_WORKSPACE/configfiles/packages/* package/firmware/
+# cp -f $GITHUB_WORKSPACE/configfiles/opwifi package/base-files/files/etc/init.d/opwifi
+# chmod 755 package/base-files/files/etc/init.d/opwifi
 # sed -i "s/wireless.radio\${devidx}.disabled=1/wireless.radio\${devidx}.disabled=0/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 
@@ -59,6 +59,26 @@ cp -f $GITHUB_WORKSPACE/configfiles/coremark/coremark-arm64 package/base-files/f
 cp -f $GITHUB_WORKSPACE/configfiles/coremark/coremark-arm64.sh package/base-files/files/bin/coremark.sh
 chmod 755 package/base-files/files/bin/coremark-arm64
 chmod 755 package/base-files/files/bin/coremark.sh
+
+
+
+# cp -f $GITHUB_WORKSPACE/configfiles/init.sh target/linux/rockchip/rk35xx/base-files/lib/board/init.sh
+
+cp -f $GITHUB_WORKSPACE/configfiles/02_network target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
+
+
+
+# 增加bdy_g98-nas
+echo -e "\\ndefine Device/bdy_g98-nas
+$(call Device/rk3588)
+  DEVICE_VENDOR := BDY
+  DEVICE_MODEL := G98
+  DEVICE_PACKAGES := kmod-r8125 kmod-nvme kmod-scsi-core kmod-hwmon-pwmfan kmod-thermal
+  SUPPORTED_DEVICES += bdy,g98-nas
+  DEVICE_DTS := rk3588-bdy-g98-nas
+endef
+TARGET_DEVICES += bdy_g98-nas" >> target/linux/rockchip/image/rk35xx.mk
+
 
 
 # iStoreOS-settings
@@ -71,3 +91,4 @@ git clone --depth=1 https://github.com/sirpdboy/luci-app-eqosplus package/luci-a
 
 # 复制dts设备树文件到指定目录下
 cp -a $GITHUB_WORKSPACE/configfiles/dts/rk356x/* target/linux/rockchip/dts/rk3568/
+cp -a $GITHUB_WORKSPACE/configfiles/dts/rk3588/* target/linux/rockchip/dts/rk3588/
