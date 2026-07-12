@@ -349,9 +349,6 @@ static void yt9215_init_ports(struct yt9215_priv *priv)
 					case 1000:
 						val |= PORT_CTRL_SPEED_1000;
 						break;
-					case 2500:
-						val |= PORT_CTRL_SPEED_2500;
-						break;
 				}
 			}
 			if (of_property_read_bool(fixed, "full-duplex")) {
@@ -409,9 +406,6 @@ static void yt9215_init_ports(struct yt9215_priv *priv)
 						break;
 					case 1000:
 						val |= SGMII_CTRL_SPEED_1000;
-						break;
-					case 2500:
-						val |= SGMII_CTRL_SPEED_2500;
 						break;
 				}
 				if (full_duplex)
@@ -596,8 +590,6 @@ static int yt9215_get_link(struct switch_dev *dev, int port,
 		link->speed = SWITCH_PORT_SPEED_100;
 	else if((val & PORT_STATUS_SPEED_MASK) == PORT_STATUS_SPEED_1000)
 		link->speed = SWITCH_PORT_SPEED_1000;
-	else if((val & PORT_STATUS_SPEED_MASK) == PORT_STATUS_SPEED_2500)
-		link->speed = SWITCH_PORT_SPEED_2500;
 	else
 		link->speed = SWITCH_PORT_SPEED_UNKNOWN;
 
