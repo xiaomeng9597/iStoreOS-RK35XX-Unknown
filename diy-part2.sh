@@ -26,6 +26,13 @@ sed -i "/.*CONFIG_ROCKCHIP_RGA2.*/d" target/linux/rockchip/rk35xx/config-5.10
 # sed -i "/CONFIG_ROCKCHIP_RGA2_PROC_FS=y/d" target/linux/rockchip/rk35xx/config-5.10
 
 
+# 追加自定义内核配置项
+echo "CONFIG_YT9215_PHY=y
+CONFIG_BRIDGE_VLAN_FILTERING=y
+CONFIG_LEDS_GPIO=y
+CONFIG_SWCONFIG_LEDS=y" >> /istoreos-istoreos-22.03/target/linux/rockchip/rk35xx/config-5.10
+
+
 
 # 修改uhttpd配置文件，启用nginx
 # sed -i "/.*uhttpd.*/d" .config
@@ -83,6 +90,7 @@ TARGET_DEVICES += bdy_g98-nas" >> target/linux/rockchip/image/rk35xx.mk
 
 # 复制yt9215s驱动文件到指定目录下
 cp -f $GITHUB_WORKSPACE/configfiles/driver/yt9215.c target/linux/generic/files/drivers/net/phy/yt9215.c
+cp -f $GITHUB_WORKSPACE/configfiles/driver/700-swconfig_switch_drivers.patch target/linux/generic/hack-5.10/700-swconfig_switch_drivers.patch 
 ls target/linux/generic/files/drivers/net/phy/
 
 
