@@ -35,7 +35,7 @@ CONFIG_BRIDGE=y
 CONFIG_BRIDGE_VLAN_FILTERING=y
 CONFIG_LEDS_GPIO=y
 CONFIG_SWCONFIG_LEDS=y
-CONFIG_NET_SWITCHDEV=y" >> /istoreos-istoreos-22.03/target/linux/rockchip/rk35xx/config-5.10
+CONFIG_NET_SWITCHDEV=y" >> target/linux/rockchip/rk35xx/config-5.10
 
 
 
