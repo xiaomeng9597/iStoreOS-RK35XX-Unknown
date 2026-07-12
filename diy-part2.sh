@@ -81,6 +81,11 @@ TARGET_DEVICES += bdy_g98-nas" >> target/linux/rockchip/image/rk35xx.mk
 
 
 
+# 复制yt9215s驱动文件到指定目录下
+cp -f $GITHUB_WORKSPACE/configfiles/driver/yt9215.c target/linux/generic/files/drivers/net/phy/yt9215.c
+ls target/linux/generic/files/drivers/net/phy/
+
+
 # iStoreOS-settings
 git clone --depth=1 -b main https://github.com/xiaomeng9597/istoreos-settings package/default-settings
 
@@ -92,4 +97,3 @@ git clone --depth=1 https://github.com/sirpdboy/luci-app-eqosplus package/luci-a
 # 复制dts设备树文件到指定目录下
 cp -a $GITHUB_WORKSPACE/configfiles/dts/rk356x/* target/linux/rockchip/dts/rk3568/
 cp -a $GITHUB_WORKSPACE/configfiles/dts/rk3588/* target/linux/rockchip/dts/rk3588/
-ls target/linux/rockchip/dts/rk3588/
