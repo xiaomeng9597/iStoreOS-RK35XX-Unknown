@@ -27,10 +27,15 @@ sed -i "/.*CONFIG_ROCKCHIP_RGA2.*/d" target/linux/rockchip/rk35xx/config-5.10
 
 
 # 追加自定义内核配置项
-echo "CONFIG_YT9215_PHY=y
+echo "CONFIG_DSA=y
+CONFIG_NET_DSA=y
+CONFIG_SWCONFIG=y
+CONFIG_YT9215_PHY=y
+CONFIG_BRIDGE=y
 CONFIG_BRIDGE_VLAN_FILTERING=y
 CONFIG_LEDS_GPIO=y
-CONFIG_SWCONFIG_LEDS=y" >> /istoreos-istoreos-22.03/target/linux/rockchip/rk35xx/config-5.10
+CONFIG_SWCONFIG_LEDS=y
+CONFIG_NET_SWITCHDEV=y" >> /istoreos-istoreos-22.03/target/linux/rockchip/rk35xx/config-5.10
 
 
 
