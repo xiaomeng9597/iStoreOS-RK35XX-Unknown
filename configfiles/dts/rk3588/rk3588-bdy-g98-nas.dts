@@ -6065,7 +6065,6 @@
 					regulator-min-microvolt = <0xb71b0>;
 					regulator-max-microvolt = <0xb71b0>;
 					regulator-name = "vdd_0v75_s0";
-					phandle = <0x1c5>;
 
 					regulator-state-mem {
 						regulator-off-in-suspend;
