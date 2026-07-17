@@ -2301,7 +2301,7 @@
 			snps,dis-tx-ipgap-linecheck-quirk;
 			snps,dis_rxdet_inp3_quirk;
 			snps,parkmode-disable-ss-quirk;
-			status = "disabled";
+			status = "okay";
 		};
 	};
 
