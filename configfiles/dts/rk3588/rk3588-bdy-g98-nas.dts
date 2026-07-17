@@ -8670,26 +8670,6 @@
 		};
 	};
 
-	pcie30-avdd0v75 {
-		compatible = "regulator-fixed";
-		regulator-name = "pcie30_avdd0v75";
-		regulator-boot-on;
-		regulator-always-on;
-		regulator-min-microvolt = <0xb71b0>;
-		regulator-max-microvolt = <0xb71b0>;
-		vin-supply = <0x1c5>;
-	};
-
-	pcie30-avdd1v8 {
-		compatible = "regulator-fixed";
-		regulator-name = "pcie30_avdd1v8";
-		regulator-boot-on;
-		regulator-always-on;
-		regulator-min-microvolt = <0x1b7740>;
-		regulator-max-microvolt = <0x1b7740>;
-		vin-supply = <0x16d>;
-	};
-
 	vcc12v-dcin {
 		compatible = "regulator-fixed";
 		regulator-name = "vcc12v_dcin";
