@@ -7882,7 +7882,7 @@
 			snps,dis-tx-ipgap-linecheck-quirk;
 			snps,parkmode-disable-ss-quirk;
 			status = "okay";
-			maximum-speed = "high-speed";
+			maximum-speed = "super-speed";
 		};
 	};
 
@@ -8523,7 +8523,7 @@
 		resets = <0x02 0x2f 0x02 0x30 0x02 0x31 0x02 0x32 0x02 0x484>;
 		reset-names = "init", "cmn", "lane", "pcs_apb", "pma_apb";
 		status = "okay";
-		rockchip,dp-lane-mux = <0x00 0x01 0x02 0x03>;
+		rockchip,dp-lane-mux = <0x02 0x03>;
 
 		dp-port {
 			#phy-cells = <0x00>;
@@ -8534,7 +8534,7 @@
 		u3-port {
 			#phy-cells = <0x00>;
 			status = "okay";
-			maximum-speed = "high-speed";
+			maximum-speed = "super-speed";
 			phandle = <0x190>;
 		};
 	};
