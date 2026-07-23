@@ -6,7 +6,7 @@
 	#address-cells = <0x02>;
 	#size-cells = <0x02>;
 	model = "BDY-G98 NAS";
-	eth_order = "0003:31:00.0,0002:21:00.0";
+	eth_order = "0002:21:00.0,0003:31:00.0";
 
 	aliases {
 		csi2dcphy0 = "/csi2-dcphy0";
