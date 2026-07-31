@@ -2037,7 +2037,7 @@
 		rockchip,pvtm-pvtpll;
 		rockchip,pvtm-offset = <0x1c>;
 		rockchip,pvtm-sample-time = <0x44c>;
-		rockchip,pvtm-freq = "", "\f5";
+		rockchip,pvtm-freq = <0xc3500>;
 		rockchip,pvtm-volt = <0xb71b0>;
 		rockchip,pvtm-ref-temp = <0x19>;
 		rockchip,pvtm-temp-prop = <0xffffff79 0xffffff79>;
@@ -2052,7 +2052,7 @@
 		rockchip,low-temp = <0x2710>;
 		rockchip,low-temp-min-volt = <0xb71b0>;
 		rockchip,high-temp = <0x14c08>;
-		rockchip,high-temp-max-freq = "", "\f5";
+		rockchip,high-temp-max-freq = <0xc3500>;
 		phandle = <0x59>;
 
 		opp-300000000 {
@@ -3002,7 +3002,7 @@
 		rockchip,pvtm-pvtpll;
 		rockchip,pvtm-offset = <0x50>;
 		rockchip,pvtm-sample-time = <0x44c>;
-		rockchip,pvtm-freq = "", "\f5";
+		rockchip,pvtm-freq = <0xc3500>;
 		rockchip,pvtm-volt = <0xb71b0>;
 		rockchip,pvtm-ref-temp = <0x19>;
 		rockchip,pvtm-temp-prop = <0xffffff8f 0xffffff8f>;
@@ -3018,7 +3018,7 @@
 		rockchip,low-temp = <0x2710>;
 		rockchip,low-temp-min-volt = <0xb71b0>;
 		rockchip,high-temp = <0x14c08>;
-		rockchip,high-temp-max-freq = "", "\f5";
+		rockchip,high-temp-max-freq = <0xc3500>;
 		phandle = <0xa5>;
 
 		opp-300000000 {
