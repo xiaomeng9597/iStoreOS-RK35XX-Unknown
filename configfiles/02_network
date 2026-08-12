@@ -25,7 +25,6 @@ rockchip_setup_interfaces()
 	jsy,h1|\
 	nlnet,xgp|\
 	radxa,e52c|\
-	bdy,g98-nas|\
 	xunlong,orangepi-5-plus|\
 	firefly,rk3568-roc-pc)
 		ucidef_set_interfaces_lan_wan 'eth1' 'eth0'
@@ -49,6 +48,9 @@ rockchip_setup_interfaces()
 		;;
 	roceos,k60pro)
 		ucidef_set_interfaces_lan_wan 'eth1 eth2 eth3 eth4 eth5' 'eth0'
+		;;
+	bdy,g98-nas)
+		ucidef_set_interfaces_lan_wan 'eth3 lan1 lan2 lan3 lan4 lan5 lan6 lan7 lan8' 'eth2'
 		;;
 	friendlyelec,nanopi-r6s)
 		ucidef_set_interfaces_lan_wan 'eth2 eth0' 'eth1'
