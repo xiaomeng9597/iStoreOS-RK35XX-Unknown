@@ -45,6 +45,8 @@ struct phylink_link_state;
 #define DSA_TAG_PROTO_OCELOT_VALUE		15
 #define DSA_TAG_PROTO_AR9331_VALUE		16
 #define DSA_TAG_PROTO_RTL4_A_VALUE		17
+
+
 #define DSA_TAG_PROTO_YT921X_VALUE		18
 
 enum dsa_tag_protocol {
