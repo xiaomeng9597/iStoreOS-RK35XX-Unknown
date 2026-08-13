@@ -105,3 +105,6 @@ git clone --depth=1 https://github.com/sirpdboy/luci-app-eqosplus package/luci-a
 # 复制dts设备树文件到指定目录下
 cp -a $GITHUB_WORKSPACE/configfiles/dts/rk356x/* target/linux/rockchip/dts/rk3568/
 cp -a $GITHUB_WORKSPACE/configfiles/dts/rk3588/* target/linux/rockchip/dts/rk3588/
+
+
+rm -f target/linux/generic/backport-5.10/740-v5.13-0004-net-dsa-tag_brcm-add-support-for-legacy-tags.patch
