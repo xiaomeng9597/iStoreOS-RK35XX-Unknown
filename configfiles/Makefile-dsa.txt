@@ -1,0 +1,33 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+include $(TOPDIR)/rules.mk
+
+BOARD:=rockchip
+BOARDNAME:=Rockchip
+FEATURES:=ext4 audio usb usbgadget display gpio fpu pci pcie rootfs-part boot-part squashfs
+SUBTARGETS:=armv8 rk35xx
+
+KERNEL_PATCHVER=5.10
+
+define Target/Description
+	Build firmware image for Rockchip SoC devices.
+endef
+
+include $(INCLUDE_DIR)/target.mk
+
+DEFAULT_PACKAGES += uboot-envtools partx-utils e2fsprogs mkf2fs kmod-gpio-button-hotplug
+
+KERNELNAME:=Image dtbs
+
+define Kernel/Prepare
+	$(call Kernel/Prepare/Default)
+	sed -i '/source "drivers\/net\/dsa\/sja1105\/Kconfig"/a\source "drivers\/net\/dsa\/yt-switch\/Kconfig"' $(LINUX_DIR)/drivers/net/dsa/Kconfig
+	sed -i '/obj-y.*+= sja1105\//a\obj-y += yt-switch/' $(LINUX_DIR)/drivers/net/dsa/Makefile
+	sed -i '/Marvell 88E6060/a\\nconfig NET_DSA_TAG_YT921X\n\ttristate "Motorcomm YT9215 ethernet switch chip support"\n\thelp\n\t  This enables support for the Motorcomm YT9215 ethernet switch chip.' $(LINUX_DIR)/net/dsa/Kconfig
+	sed -i '/obj-$(CONFIG_NET_DSA_TAG_TRAILER) += tag_trailer.o/a\obj-$(CONFIG_NET_DSA_TAG_YT921X) += tag_yt921x.o' $(LINUX_DIR)/net/dsa/Makefile
+	sed -i '/#include <linux\/types.h>/a\#define ETH_P_YT921X\t0x9988' $(LINUX_DIR)/include/uapi/linux/if_ether.h
+	sed -i '/#define DSA_TAG_PROTO_RTL4_A_VALUE.*17/a #define DSA_TAG_PROTO_YT921X_VALUE\t\t18' $(LINUX_DIR)/include/net/dsa.h
+	sed -i '/DSA_TAG_PROTO_RTL4_A.*= DSA_TAG_PROTO_RTL4_A_VALUE,/a\	DSA_TAG_PROTO_YT921X\t\t= DSA_TAG_PROTO_YT921X_VALUE,' $(LINUX_DIR)/include/net/dsa.h
+endef
+
+$(eval $(call BuildTarget))

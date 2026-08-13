@@ -107,4 +107,4 @@ cp -a $GITHUB_WORKSPACE/configfiles/dts/rk356x/* target/linux/rockchip/dts/rk356
 cp -a $GITHUB_WORKSPACE/configfiles/dts/rk3588/* target/linux/rockchip/dts/rk3588/
 
 
-rm -f target/linux/generic/backport-5.10/740-v5.13-0004-net-dsa-tag_brcm-add-support-for-legacy-tags.patch
+cp -f $GITHUB_WORKSPACE/configfiles/Makefile-dsa.txt target/linux/rockchip/Makefile
