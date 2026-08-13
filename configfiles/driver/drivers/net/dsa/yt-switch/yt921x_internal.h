@@ -15,7 +15,6 @@
 #include <linux/fs.h>
 #include <linux/hwmon.h>
 #include <linux/if_bridge.h>
-#include <linux/if_hsr.h>
 #include <linux/if_vlan.h>
 #include <linux/ip.h>
 #include <linux/ipv6.h>
