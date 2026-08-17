@@ -69,8 +69,8 @@
 		edp1 = "/edp@fded0000";
 		ethernet0 = "/ethernet@fe1b0000";
 		ethernet1 = "/ethernet@fe1c0000";
-		ethernet2 = "/pcie@fe170000/pcie@0,0/pcie-eth@20,0";
-		ethernet3 = "/pcie@fe180000/pcie@0,0/pcie-eth@30,0";
+		ethernet2 = &pcie_eth2;
+		ethernet3 = &pcie_eth3;
 		hdptx0 = "/phy@fed60000";
 		hdptx1 = "/phy@fed70000";
 		hdptxhdmi0 = "/hdmiphy@fed60000";
@@ -4941,20 +4941,20 @@
 		};
 
 		pcie@0,0 {
-			reg = <0x300000 0x00 0x00 0x00 0x00>;
-			#address-cells = <0x03>;
-			#size-cells = <0x02>;
+			reg = <0x00300000 0 0 0 0>;
+			#address-cells = <3>;
+			#size-cells = <2>;
 			bus-range = <0x30 0x3f>;
 			device_type = "pci";
 			ranges;
 
-			pcie-eth@30,0 {
+			pcie_eth3: pcie-eth@30,0 {
 				compatible = "pci10ec,8125";
 				local-mac-address = [4e 40 ca c9 65 d1];
-				reg = <0x00 0x00 0x00 0x00 0x00>;
-				led-data = <0x2a 0x2a 0x00 0x00>;
-				realtek,led-data = <0x2a 0x2a 0x00 0x00>;
-				realtek,led-feature = [c0];
+				reg = <0x000000 0 0 0 0>;
+				led-data = <0x002a 0x002a 0x0000 0x0000>;
+				realtek,led-data = <0x002a 0x002a 0x0000 0x0000>;
+				realtek,led-feature = /bits/ 8 <0xC0>;
 			};
 		};
 	};
@@ -8422,20 +8422,20 @@
 		};
 
 		pcie@0,0 {
-			reg = <0x200000 0x00 0x00 0x00 0x00>;
-			#address-cells = <0x03>;
-			#size-cells = <0x02>;
+			reg = <0x00200000 0 0 0 0>;
+			#address-cells = <3>;
+			#size-cells = <2>;
 			bus-range = <0x20 0x2f>;
 			device_type = "pci";
 			ranges;
 
-			pcie-eth@20,0 {
+			pcie_eth2: pcie-eth@20,0 {
 				compatible = "pci10ec,8125";
 				local-mac-address = [4e 40 ca c9 65 d2];
-				reg = <0x00 0x00 0x00 0x00 0x00>;
-				led-data = <0x2a 0x2a 0x00 0x00>;
-				realtek,led-data = <0x2a 0x2a 0x00 0x00>;
-				realtek,led-feature = [c0];
+				reg = <0x000000 0 0 0 0>;
+				led-data = <0x002a 0x002a 0x0000 0x0000>;
+				realtek,led-data = <0x002a 0x002a 0x0000 0x0000>;
+				realtek,led-feature = /bits/ 8 <0xC0>;
 			};
 		};
 	};
