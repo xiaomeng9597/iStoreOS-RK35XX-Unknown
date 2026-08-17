@@ -27,11 +27,10 @@ sed -i "/.*CONFIG_ROCKCHIP_RGA2.*/d" target/linux/rockchip/rk35xx/config-5.10
 
 
 # 追加自定义内核配置项
-echo "CONFIG_NET_DSA=y
-CONFIG_NET_DSA_YT921X=y
-CONFIG_NET_DSA_TAG_YT921X=y
-CONFIG_NET_DSA_YT921X_DEBUG=n
-CONFIG_NET_DSA_YT921X_CR881X=n" >> target/linux/rockchip/rk35xx/config-5.10
+echo "CONFIG_YT9215_SWITCH=y
+CONFIG_BRIDGE_VLAN_FILTERING=y
+CONFIG_LEDS_GPIO=y
+CONFIG_SWCONFIG_LEDS=y" >> target/linux/rockchip/rk35xx/config-5.10
 
 
 
@@ -90,7 +89,7 @@ TARGET_DEVICES += bdy_g98-nas" >> target/linux/rockchip/image/rk35xx.mk
 
 
 # 复制yt9215s驱动文件到指定目录下
-cp -a $GITHUB_WORKSPACE/configfiles/driver/* target/linux/generic/files
+cp -a $GITHUB_WORKSPACE/configfiles/driver3/* target/linux/generic/files
 ls target/linux/generic/files
 
 
