@@ -5023,7 +5023,7 @@
 		snps,axi-config = <0x101>;
 		snps,mtl-rx-config = <0x102>;
 		snps,mtl-tx-config = <0x103>;
-		status = "disabled";
+		status = "okay";
 		phy-mode = "rgmii-rxid";
 		clock_in_out = "output";
 		snps,reset-gpio = <0xf4 0x0b 0x01>;
@@ -8464,7 +8464,7 @@
 		snps,axi-config = <0x1ac>;
 		snps,mtl-rx-config = <0x1ad>;
 		snps,mtl-tx-config = <0x1ae>;
-		status = "disabled";
+		status = "okay";
 		phy-mode = "rgmii-rxid";
 		clock_in_out = "output";
 		snps,reset-gpio = <0x1a7 0x18 0x01>;
@@ -8707,8 +8707,8 @@
 	};
 
 	leds {
-		status = "disabled";
 		compatible = "gpio-leds";
+		status = "okay";
 
 		hdd-led {
 			gpios = <0x1a7 0x11 0x00>;
