@@ -19,7 +19,6 @@
 		csi2dphy5 = "/csi2-dphy5";
 		dsi0 = "/dsi@fde20000";
 		dsi1 = "/dsi@fde30000";
-		ethernet1 = "/ethernet@fe1c0000";
 		gpio0 = "/pinctrl/gpio@fd8a0000";
 		gpio1 = "/pinctrl/gpio@fec20000";
 		gpio2 = "/pinctrl/gpio@fec30000";
@@ -69,6 +68,9 @@
 		edp0 = "/edp@fdec0000";
 		edp1 = "/edp@fded0000";
 		ethernet0 = "/ethernet@fe1b0000";
+		ethernet1 = "/ethernet@fe1c0000";
+		ethernet2 = "/pcie@fe170000/pcie@0,0/pcie-eth@20,0";
+		ethernet3 = "/pcie@fe180000/pcie@0,0/pcie-eth@30,0";
 		hdptx0 = "/phy@fed60000";
 		hdptx1 = "/phy@fed70000";
 		hdptxhdmi0 = "/hdmiphy@fed60000";
@@ -4937,6 +4939,24 @@
 			interrupts = <0x00 0xf5 0x01>;
 			phandle = <0xfb>;
 		};
+
+		pcie@0,0 {
+			reg = <0x300000 0x00 0x00 0x00 0x00>;
+			#address-cells = <0x03>;
+			#size-cells = <0x02>;
+			bus-range = <0x30 0x3f>;
+			device_type = "pci";
+			ranges;
+
+			pcie-eth@30,0 {
+				compatible = "pci10ec,8125";
+				local-mac-address = [4e 40 ca c9 65 d1];
+				reg = <0x00 0x00 0x00 0x00 0x00>;
+				led-data = <0x2a 0x2a 0x00 0x00>;
+				realtek,led-data = <0x2a 0x2a 0x00 0x00>;
+				realtek,led-feature = [c0];
+			};
+		};
 	};
 
 	pcie@fe190000 {
@@ -4987,7 +5007,6 @@
 	};
 
 	ethernet@fe1c0000 {
-		local-mac-address = [ae 4b 7e fa a2 7f];
 		compatible = "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
 		reg = <0x00 0xfe1c0000 0x00 0x10000>;
 		interrupts = <0x00 0xea 0x04 0x00 0xe9 0x04>;
@@ -8401,6 +8420,24 @@
 			interrupts = <0x00 0xf0 0x01>;
 			phandle = <0x1a8>;
 		};
+
+		pcie@0,0 {
+			reg = <0x200000 0x00 0x00 0x00 0x00>;
+			#address-cells = <0x03>;
+			#size-cells = <0x02>;
+			bus-range = <0x20 0x2f>;
+			device_type = "pci";
+			ranges;
+
+			pcie-eth@20,0 {
+				compatible = "pci10ec,8125";
+				local-mac-address = [4e 40 ca c9 65 d2];
+				reg = <0x00 0x00 0x00 0x00 0x00>;
+				led-data = <0x2a 0x2a 0x00 0x00>;
+				realtek,led-data = <0x2a 0x2a 0x00 0x00>;
+				realtek,led-feature = [c0];
+			};
+		};
 	};
 
 	uio@fe1b0000 {
@@ -8411,7 +8448,6 @@
 	};
 
 	ethernet@fe1b0000 {
-		local-mac-address = [aa 4b 7e fa a2 7f];
 		compatible = "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
 		reg = <0x00 0xfe1b0000 0x00 0x10000>;
 		interrupts = <0x00 0xe3 0x04 0x00 0xe2 0x04>;

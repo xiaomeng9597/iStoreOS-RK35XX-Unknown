@@ -69,7 +69,7 @@ chmod 755 package/base-files/files/bin/coremark.sh
 
 
 
-# cp -f $GITHUB_WORKSPACE/configfiles/init.sh target/linux/rockchip/rk35xx/base-files/lib/board/init.sh
+cp -f $GITHUB_WORKSPACE/configfiles/init.sh target/linux/rockchip/rk35xx/base-files/lib/board/init.sh
 
 cp -f $GITHUB_WORKSPACE/configfiles/02_network target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
 
@@ -91,6 +91,14 @@ TARGET_DEVICES += bdy_g98-nas" >> target/linux/rockchip/image/rk35xx.mk
 # 复制yt9215s驱动文件到指定目录下
 cp -a $GITHUB_WORKSPACE/configfiles/driver3/* target/linux/generic/files
 ls target/linux/generic/files
+
+
+sed -i '/for e in \$val; do json_add_string "" "\$e"; done/c\
+\n\t\t\tlocal keys p seen=" "\
+\t\t\tjson_get_keys keys\
+\t\t\tfor k in $keys; do json_get_var p "$k"; seen="$seen$p "; done\
+\t\t\tfor e in $val; do [ -n "${seen##* $e *}" ] && json_add_string "" "$e" && seen="$seen$e "; done\n' package/base-files/files/lib/functions/uci-defaults.sh
+# cp -f $GITHUB_WORKSPACE/configfiles/uci-defaults.sh package/base-files/files/lib/functions/uci-defaults.sh
 
 
 # iStoreOS-settings
