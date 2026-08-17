@@ -106,4 +106,4 @@ cp -a $GITHUB_WORKSPACE/configfiles/dts/rk356x/* target/linux/rockchip/dts/rk356
 cp -a $GITHUB_WORKSPACE/configfiles/dts/rk3588/* target/linux/rockchip/dts/rk3588/
 
 
-cp -f $GITHUB_WORKSPACE/configfiles/Makefile-dsa.txt target/linux/rockchip/Makefile
+# cp -f $GITHUB_WORKSPACE/configfiles/Makefile-dsa.txt target/linux/rockchip/Makefile
