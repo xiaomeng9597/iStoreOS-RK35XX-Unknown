@@ -5019,7 +5019,17 @@
 			compatible = "snps,dwmac-mdio";
 			#address-cells = <0x01>;
 			#size-cells = <0x00>;
-			phandle = <0x1ca>;
+			status = "okay";
+
+			// Motorcomm YT9215
+			yt9215_1: switch@1d {
+				compatible = "motorcomm,yt9215s";
+				reg = <0x1d>;
+				motorcomm,num-ports = <5>;
+				motorcomm,cpu-port = <4>;
+				motorcomm,id = <1>;
+				motorcomm,port-map = <1 2 3 4 9>;
+			};
 		};
 
 		stmmac-axi-config {
@@ -8433,7 +8443,17 @@
 			compatible = "snps,dwmac-mdio";
 			#address-cells = <0x01>;
 			#size-cells = <0x00>;
-			phandle = <0x1cb>;
+			status = "okay";
+
+			// Motorcomm YT9215
+			yt9215_0: switch@1d {
+				compatible = "motorcomm,yt9215s";
+				reg = <0x1d>;
+				motorcomm,num-ports = <5>;
+				motorcomm,cpu-port = <4>;
+				motorcomm,id = <0>;
+				motorcomm,port-map = <1 2 3 4 9>;
+			};
 		};
 
 		stmmac-axi-config {
@@ -8799,19 +8819,5 @@
 			ftrace-size = <0x00>;
 			pmsg-size = <0x50000>;
 		};
-	};
-
-	ytgsw@0 {
-		compatible = "motorcomm,yt9215s";
-		motorcomm,mdio = <0x1ca>;
-		motorcomm,id = <0x00>;
-		status = "okay";
-	};
-
-	ytgsw@1 {
-		compatible = "motorcomm,yt9215s";
-		motorcomm,mdio = <0x1cb>;
-		motorcomm,id = <0x01>;
-		status = "okay";
 	};
 };
