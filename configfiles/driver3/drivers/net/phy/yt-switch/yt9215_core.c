@@ -650,6 +650,7 @@ static int yt9215_probe(struct mdio_device *mdiodev)
 	u32 map[YT9215_SWCONFIG_PORTS];
 	u32 id;
 	int ret;
+	int i;
 
 	p = devm_kzalloc(dev, sizeof(*p), GFP_KERNEL);
 	if (!p)
@@ -692,7 +693,7 @@ static int yt9215_probe(struct mdio_device *mdiodev)
 		return dev_err_probe(dev, -EINVAL, "missing/invalid required motorcomm,port-map property\n");
 	}
 
-	for (int i = 0; i < YT9215_SWCONFIG_PORTS; i++)
+	for (i = 0; i < YT9215_SWCONFIG_PORTS; i++)
 		p->port_map[i] = (u8)map[i];
 
 	/* PHY init */

@@ -23,6 +23,7 @@ static int yt9215_get_vlan_ports(struct switch_dev *dev, struct switch_val *val)
 	struct yt9215_priv *p = container_of(dev, struct yt9215_priv, swdev);
 	u32 reg, member;
 	int ret;
+	int i;
 
 	ret = yt9215_reg_read(p, YT9215_VLAN_TBL_REG(val->port_vlan), &reg);
 	if (ret)
@@ -31,7 +32,7 @@ static int yt9215_get_vlan_ports(struct switch_dev *dev, struct switch_val *val)
 	member = (reg & VLAN_TBL_PORT_MEMBER_MASK) >> VLAN_TBL_PORT_MEMBER_OFFSET;
 
 	val->len = 0;
-	for (int i = 0; i < p->num_ports; i++) {
+	for (i = 0; i < p->num_ports; i++) {
 		int swport = yt9215_swport(p, i);
 
 		if (swport >= 0 && (member & BIT(swport))) {
@@ -53,8 +54,9 @@ static int yt9215_set_vlan_ports(struct switch_dev *dev, struct switch_val *val)
 	u32 member = 0, untag = 0;
 	u32 reg = YT9215_VLAN_TBL_REG(val->port_vlan);
 	int ret;
+	int i;
 
-	for (int i = 0; i < val->len; i++) {
+	for (i = 0; i < val->len; i++) {
 		int swport = yt9215_swport(p, val->value.ports[i].id);
 
 		if (swport < 0)
