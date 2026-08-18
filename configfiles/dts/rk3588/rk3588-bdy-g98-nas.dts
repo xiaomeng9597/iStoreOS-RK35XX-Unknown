@@ -5221,7 +5221,6 @@
 		bus-width = <0x08>;
 		no-sdio;
 		no-sd;
-		supports-emmc;
 		non-removable;
 		mmc-hs200-1_8v;
 		mmc-hs400-1_8v;
