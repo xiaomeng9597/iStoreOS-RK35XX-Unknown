@@ -5215,7 +5215,7 @@
 		resets = <0x02 0x1f6 0x02 0x1f4 0x02 0x1f5 0x02 0x1f7 0x02 0x1f8>;
 		reset-names = "core", "bus", "axi", "block", "timer";
 		pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8 &emmc_data_strobe &emmc_rstnout>;
-	pinctrl-names = "default";
+		pinctrl-names = "default";
 		status = "okay";
 		bus-width = <0x08>;
 		no-sdio;
