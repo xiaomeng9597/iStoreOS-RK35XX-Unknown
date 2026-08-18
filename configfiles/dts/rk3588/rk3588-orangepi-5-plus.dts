@@ -1111,7 +1111,7 @@
     non-removable;
     max-frequency = <200000000>;
     pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8 &emmc_data_strobe &emmc_rstnout>;
-	pinctrl-names = "default";
+    pinctrl-names = "default";
     mmc-hs400-1_8v;
     mmc-hs400-enhanced-strobe;
     status = "okay";
